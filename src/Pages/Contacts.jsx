@@ -12,8 +12,8 @@ export default function Contacts() {
     console.log(travel);
 
     function handletoggle(e) {
-
-        document.getElementById(`${e.target.id + 1}`).classList.toggle('d-none')
+        const target = filteredParticipants[e.target.id].codice_fiscale
+        document.getElementById(`${target}`).classList.toggle('d-none')
 
     }
 
@@ -26,19 +26,19 @@ export default function Contacts() {
                 <h1 className="mb-4">{travel.destinazione}</h1>
                 {filteredParticipants.map((single, index) =>
                     <div className="card col-9 col-md-6 col-lg-4 m-auto mb-3" key={index}>
-                        <div className="card-body" id={index}>
+                        <div className="card-body">
                             <div className="d-flex justify-content-between align-items-center">
                                 <div>
                                     <span>{single.nome} </span>
                                     <span>{single.cognome}</span>
 
                                 </div>
-                                <i onClick={handletoggle} id={single.codice_fiscale} class="bi bi-arrow-down-short fs-2"></i>
+                                <i onClick={handletoggle} id={index} class="bi bi-arrow-down-short fs-2"></i>
 
                             </div>
 
 
-                            <div className={`d-none text-start`} id={single.codice_fiscale + 1}>
+                            <div className={`d-none text-start`} id={single.codice_fiscale}>
                                 <div>
                                     email: {single.email}
                                 </div>
